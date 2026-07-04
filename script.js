@@ -698,3 +698,38 @@ window.addEventListener("afterprint", () => {
   }, { passive: true });
   update();
 })();
+
+
+/* ── Carrusel de novedades (portada): auto-avance + flechas ── */
+const newsTrack = document.querySelector(".news-track");
+if (newsTrack) {
+  const newsStep = () => {
+    const card = newsTrack.querySelector(".news-card");
+    return card ? card.getBoundingClientRect().width + 18 : newsTrack.clientWidth;
+  };
+  const newsAtEnd = () =>
+    newsTrack.scrollLeft + newsTrack.clientWidth >= newsTrack.scrollWidth - 12;
+  const newsGo = (dir) => {
+    if (dir > 0 && newsAtEnd()) {
+      newsTrack.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+    newsTrack.scrollBy({ left: dir * newsStep(), behavior: "smooth" });
+  };
+
+  document.querySelector("[data-news-prev]")?.addEventListener("click", () => newsGo(-1));
+  document.querySelector("[data-news-next]")?.addEventListener("click", () => newsGo(1));
+
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    let newsTimer = setInterval(() => newsGo(1), 4500);
+    const newsStop = () => clearInterval(newsTimer);
+    const newsStart = () => {
+      newsStop();
+      newsTimer = setInterval(() => newsGo(1), 4500);
+    };
+    ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach((ev) =>
+      newsTrack.addEventListener(ev, newsStop, { passive: true })
+    );
+    ["mouseleave", "focusout"].forEach((ev) => newsTrack.addEventListener(ev, newsStart));
+  }
+}

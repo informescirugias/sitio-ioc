@@ -55,6 +55,9 @@
     <changefreq>yearly</changefreq>
   </url>
   <url>
+    <loc>https://iocp.com.ar/novedades.html</loc>
+  </url>
+  <url>
     <loc>https://iocp.com.ar/obras-sociales.html</loc>
     <lastmod>2026-06-09</lastmod>
     <priority>0.8</priority>
