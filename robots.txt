@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /.vscode/
+
+Sitemap: https://iocp.com.ar/sitemap.xml

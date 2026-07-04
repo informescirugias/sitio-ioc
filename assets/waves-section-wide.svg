@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f8fb"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#50d8cf" stop-opacity=".08"/>
+      <stop offset=".45" stop-color="#35d3c3" stop-opacity=".88"/>
+      <stop offset="1" stop-color="#35d3c3" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#0f6f8f" stop-opacity=".22"/>
+      <stop offset=".42" stop-color="#006fb0" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#6eb7e3" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#9bd1ef" stop-opacity=".12"/>
+      <stop offset=".5" stop-color="#62b2df" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#62b2df" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <path d="M-40 764 C220 614 386 682 568 760 C752 840 950 870 1164 734 C1320 635 1458 622 1660 676" fill="none" stroke="#dbeaf2" stroke-width="66" stroke-opacity=".35"/>
+  <path d="M-42 792 C210 672 412 678 610 756 C804 832 974 848 1196 712 C1382 598 1490 616 1662 692" fill="none" stroke="url(#blue)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M-30 592 C176 698 314 714 500 640 C718 554 842 620 1006 676 C1218 748 1392 678 1658 532" fill="none" stroke="url(#sky)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M-10 640 C158 742 330 744 512 690 C742 622 846 626 1004 652 C1238 692 1386 568 1646 514" fill="none" stroke="url(#aqua)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M-10 560 C200 632 338 606 498 712 C676 830 854 802 1020 700 C1210 584 1398 552 1642 610" fill="none" stroke="#0a66a5" stroke-width="5" stroke-linecap="round" stroke-dasharray="4 18" stroke-opacity=".62"/>
+</svg>

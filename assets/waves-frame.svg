@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="none">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#fbfdfe"/>
+      <stop offset="1" stop-color="#f2f8fb"/>
+    </linearGradient>
+    <linearGradient id="lineBlue" x1="0" x2="1">
+      <stop offset="0" stop-color="#0f6f8f" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#006fb0" stop-opacity=".92"/>
+      <stop offset="1" stop-color="#68b6df" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="lineAqua" x1="0" x2="1">
+      <stop offset="0" stop-color="#35d3c3" stop-opacity=".24"/>
+      <stop offset=".58" stop-color="#35d3c3" stop-opacity=".84"/>
+      <stop offset="1" stop-color="#35d3c3" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#paper)"/>
+  <path d="M-60 96 C190 12 356 18 554 94 C730 162 868 102 1046 48 C1268 -18 1430 22 1660 110" fill="none" stroke="#9bd1ef" stroke-width="4" stroke-opacity=".5"/>
+  <path d="M-40 126 C168 188 286 22 476 -66 C684 -164 842 162 1028 170 C1258 180 1340 6 1660 82" fill="none" stroke="url(#lineBlue)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M-10 640 C214 630 324 784 516 826 C748 876 838 704 1034 664 C1262 618 1392 796 1666 720" fill="none" stroke="url(#lineAqua)" stroke-width="5" stroke-linecap="round" stroke-dasharray="10 20"/>
+  <path d="M-36 810 C210 666 392 724 582 810 C792 906 990 862 1166 742 C1354 614 1516 628 1662 742" fill="none" stroke="#0075b6" stroke-width="6" stroke-linecap="round" stroke-opacity=".7"/>
+  <path d="M-10 756 C190 650 380 664 590 722 C782 776 930 788 1118 696 C1308 602 1438 606 1660 684" fill="none" stroke="#77c7e6" stroke-width="4" stroke-linecap="round" stroke-opacity=".52"/>
+</svg>
