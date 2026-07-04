@@ -195,14 +195,27 @@ if (profileCards.length) {
   const profileGrid = document.querySelector(".profile-grid");
   const getSortableProfileName = (card) =>
     (card.querySelector("h3")?.textContent?.trim() || "").replace(/^(Dr\.|Dra\.)\s+/i, "");
-  const sortedProfileCards = Array.from(profileCards).sort((a, b) => {
-    const nameA = getSortableProfileName(a);
-    const nameB = getSortableProfileName(b);
-    return nameA.localeCompare(nameB, "es", { sensitivity: "base" });
-  });
+  const byProfileName = (a, b) =>
+    getSortableProfileName(a).localeCompare(getSortableProfileName(b), "es", { sensitivity: "base" });
+  /* Socios primero y staff después (pedido institucional), alfabético dentro de cada grupo */
+  const socioProfileCards = Array.from(profileCards).filter((card) => card.dataset.role !== "staff").sort(byProfileName);
+  const staffProfileCards = Array.from(profileCards).filter((card) => card.dataset.role === "staff").sort(byProfileName);
+  const sortedProfileCards = socioProfileCards.concat(staffProfileCards);
+
+  const makeProfileGroupLabel = (text) => {
+    const label = document.createElement("div");
+    label.className = "profile-group-label";
+    label.textContent = text;
+    return label;
+  };
+  const socioGroupLabel = makeProfileGroupLabel("Socios");
+  const staffGroupLabel = makeProfileGroupLabel("Staff");
 
   if (profileGrid) {
-    sortedProfileCards.forEach((card) => profileGrid.appendChild(card));
+    if (socioProfileCards.length) profileGrid.appendChild(socioGroupLabel);
+    socioProfileCards.forEach((card) => profileGrid.appendChild(card));
+    if (staffProfileCards.length) profileGrid.appendChild(staffGroupLabel);
+    staffProfileCards.forEach((card) => profileGrid.appendChild(card));
   }
 
   sortedProfileCards.forEach((card) => {
@@ -249,6 +262,9 @@ if (profileCards.length) {
       card.classList.toggle("is-hidden", !isVisible);
       if (isVisible) visible += 1;
     });
+
+    socioGroupLabel.classList.toggle("is-hidden", !socioProfileCards.some((card) => !card.classList.contains("is-hidden")));
+    staffGroupLabel.classList.toggle("is-hidden", !staffProfileCards.some((card) => !card.classList.contains("is-hidden")));
 
     if (profileCount) {
       profileCount.textContent = `${visible} profesional${visible === 1 ? "" : "es"} visible${visible === 1 ? "" : "s"}`;

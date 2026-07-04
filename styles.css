@@ -3313,6 +3313,34 @@ body:not(.home-page) main > .section-band:not(.page-hero) .print-bar p {
   gap: 16px;
 }
 
+.profile-group-label {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 14px 0 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-strong);
+}
+
+.profile-group-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.profile-grid .profile-group-label:first-child {
+  margin-top: 0;
+}
+
+.profile-group-label.is-hidden {
+  display: none;
+}
+
 .professionals-toolbar {
   display: grid;
   gap: 16px;
