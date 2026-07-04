@@ -5599,12 +5599,12 @@ body:not(.home-page) main {
   }
 
   .button,
-  .nav-cta,
-  .floating-whatsapp {
+  .nav-cta {
     width: 100%;
   }
 
   .floating-whatsapp {
+    /* left+right definen el ancho: con width:100% se desbordaba por la derecha */
     left: 14px;
     right: 14px;
     bottom: 14px;
