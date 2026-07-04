@@ -481,7 +481,9 @@ if ("IntersectionObserver" in window && revealItems.length) {
         }
       });
     },
-    { threshold: 0.06, rootMargin: "0px 0px -8% 0px" }
+    /* threshold 0: una sección más alta que el viewport (ej. 18 fichas apiladas
+       en móvil) nunca alcanza un ratio de 0.06, y quedaría invisible. */
+    { threshold: 0, rootMargin: "0px 0px -8% 0px" }
   );
 
   revealItems.forEach((item) => observer.observe(item));

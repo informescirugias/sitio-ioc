@@ -5573,9 +5573,8 @@ body:not(.home-page) main {
   }
 
   .hero-media {
-    background:
-      linear-gradient(180deg, rgba(3, 45, 82, 0.9), rgba(3, 45, 82, 0.74)),
-      url("assets/FONDO-azul.jpg") right center/cover;
+    /* En móvil el emblema "50" del fondo pisa el texto del hero: gradiente solo. */
+    background: linear-gradient(175deg, #032b4d 0%, #023a63 58%, #02528c 125%);
   }
 
   .hero-content p {
