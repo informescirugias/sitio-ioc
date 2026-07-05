@@ -720,12 +720,35 @@ if (newsTrack) {
   document.querySelector("[data-news-prev]")?.addEventListener("click", () => newsGo(-1));
   document.querySelector("[data-news-next]")?.addEventListener("click", () => newsGo(1));
 
+  const featuredDotsHost = document.querySelector(".featured-dots");
+  if (featuredDotsHost && newsTrack.classList.contains("featured-track")) {
+    const featuredSlides = Array.from(newsTrack.children);
+    const featuredDots = featuredSlides.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "featured-dot";
+      dot.setAttribute("aria-label", `Ver campaña ${i + 1} de ${featuredSlides.length}`);
+      dot.addEventListener("click", () =>
+        newsTrack.scrollTo({ left: i * newsTrack.clientWidth, behavior: "smooth" })
+      );
+      featuredDotsHost.appendChild(dot);
+      return dot;
+    });
+    const syncFeaturedDots = () => {
+      const idx = Math.round(newsTrack.scrollLeft / Math.max(1, newsTrack.clientWidth));
+      featuredDots.forEach((dot, i) => dot.classList.toggle("is-active", i === idx));
+    };
+    syncFeaturedDots();
+    newsTrack.addEventListener("scroll", syncFeaturedDots, { passive: true });
+  }
+
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    let newsTimer = setInterval(() => newsGo(1), 4500);
+    const newsInterval = parseInt(newsTrack.dataset.newsInterval || "4500", 10);
+    let newsTimer = setInterval(() => newsGo(1), newsInterval);
     const newsStop = () => clearInterval(newsTimer);
     const newsStart = () => {
       newsStop();
-      newsTimer = setInterval(() => newsGo(1), 4500);
+      newsTimer = setInterval(() => newsGo(1), newsInterval);
     };
     ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach((ev) =>
       newsTrack.addEventListener(ev, newsStop, { passive: true })

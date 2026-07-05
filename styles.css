@@ -6645,3 +6645,60 @@ body:not(.home-page) main > .section:not(.page-hero) {
     scroll-behavior: auto;
   }
 }
+
+
+/* ── Destacada rotativa en la página de novedades ──────────── */
+.featured-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin-bottom: 26px;
+}
+
+.featured-track::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-track .news-featured {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  margin-bottom: 0;
+}
+
+
+/* ── Ajustes novedades: menos aire arriba, rotador al ras, puntitos ── */
+.section.news-page {
+  padding-top: 26px;
+}
+
+.featured-track {
+  gap: 0;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.featured-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 26px;
+}
+
+.featured-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--line);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.featured-dot.is-active {
+  background: var(--brand);
+  transform: scale(1.3);
+}
