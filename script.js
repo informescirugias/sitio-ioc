@@ -756,3 +756,78 @@ if (newsTrack) {
     ["mouseleave", "focusout"].forEach((ev) => newsTrack.addEventListener(ev, newsStart));
   }
 }
+
+
+/* ── Invitación a reseñar en Google: estrella flotante + modal suave ── */
+(function () {
+  var REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJY-UuEI6iMpQRd2V8UBE54po";
+  var SEEN_KEY = "iocReviewAutoSeen";
+  if (document.body.classList.contains("redirect-stub")) return;
+
+  function seen() { try { return localStorage.getItem(SEEN_KEY) === "1"; } catch (e) { return false; } }
+  function markSeen() { try { localStorage.setItem(SEEN_KEY, "1"); } catch (e) {} }
+
+  var starPath = "M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z";
+  function starsSVG(cls) {
+    var s = '<div class="' + cls + '" role="img" aria-label="Calificá al Instituto">';
+    for (var i = 1; i <= 5; i++) {
+      s += '<button type="button" class="review-star" data-star="' + i + '" aria-label="' + i + ' estrella' + (i > 1 ? 's' : '') + '">' +
+           '<svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true"><path d="' + starPath + '"/></svg></button>';
+    }
+    return s + '</div>';
+  }
+
+  function openGoogle() { window.open(REVIEW_URL, "_blank", "noopener"); }
+
+  /* ---- Modal ---- */
+  var overlay = document.createElement("div");
+  overlay.className = "review-modal-overlay";
+  overlay.setAttribute("hidden", "");
+  overlay.innerHTML =
+    '<div class="review-modal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">' +
+      '<button type="button" class="review-modal-close" aria-label="Cerrar">&times;</button>' +
+      starsSVG("review-modal-stars") +
+      '<h2 id="reviewModalTitle">¿Nos ayudás a crecer?</h2>' +
+      '<p>Tu reseña ayuda a que más personas confíen en el IOC para cuidar su salud visual. Son solo dos minutos.</p>' +
+      '<button type="button" class="button primary review-modal-go">Dejar mi reseña en Google</button>' +
+      '<button type="button" class="review-modal-later">Ahora no</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+
+  var modalCard = overlay.querySelector(".review-modal");
+  function openModal() { overlay.removeAttribute("hidden"); document.body.classList.add("review-modal-open"); markSeen(); }
+  function closeModal() { overlay.setAttribute("hidden", ""); document.body.classList.remove("review-modal-open"); }
+
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) closeModal(); });
+  overlay.querySelector(".review-modal-close").addEventListener("click", closeModal);
+  overlay.querySelector(".review-modal-later").addEventListener("click", closeModal);
+  overlay.querySelector(".review-modal-go").addEventListener("click", function () { openGoogle(); closeModal(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !overlay.hasAttribute("hidden")) closeModal(); });
+
+  /* estrellas: hover rellena, click abre Google */
+  var modalStars = Array.prototype.slice.call(overlay.querySelectorAll(".review-modal-stars .review-star"));
+  function paint(host, upto) {
+    Array.prototype.forEach.call(host.querySelectorAll(".review-star"), function (b) {
+      b.classList.toggle("is-lit", parseInt(b.dataset.star, 10) <= upto);
+    });
+  }
+  modalStars.forEach(function (btn) {
+    btn.addEventListener("mouseenter", function () { paint(btn.parentNode, parseInt(btn.dataset.star, 10)); });
+    btn.addEventListener("click", function () { openGoogle(); closeModal(); });
+  });
+  overlay.querySelector(".review-modal-stars").addEventListener("mouseleave", function () { paint(this, 0); });
+
+  /* ---- Estrella flotante (siempre disponible, esquina inferior izquierda) ---- */
+  var fab = document.createElement("button");
+  fab.type = "button";
+  fab.className = "review-fab";
+  fab.setAttribute("aria-label", "Dejá tu reseña en Google");
+  fab.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="' + starPath + '"/></svg><span>Reseñá</span>';
+  fab.addEventListener("click", openModal);
+  document.body.appendChild(fab);
+
+  /* ---- Disparador automático a los ~13 s, una sola vez por visitante ---- */
+  if (!seen()) {
+    setTimeout(function () { if (!seen() && document.visibilityState === "visible") openModal(); }, 13000);
+  }
+})();
