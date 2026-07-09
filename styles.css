@@ -7026,3 +7026,13 @@ body:not(.home-page) main > .section:not(.page-hero) {
 .news-card h3 a:hover,
 .news-card h3 a:focus-visible { text-decoration: underline; }
 .media-link { display: block; height: 100%; }
+
+/* La regla ".footer span { display:block }" desarma el lockup de la marca:
+   strong y small quedaban pegados si el HTML no traia espacio entre etiquetas.
+   El flex ignora ese espacio del HTML y separa siempre igual en todas las paginas. */
+.footer-brand .brand-copy {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3em;
+}
