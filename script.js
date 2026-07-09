@@ -833,3 +833,33 @@ if (newsTrack) {
 })();
 
 
+
+/* ---- Fotos de las cintas de retratos (quienes-somos) ----
+   La cinta se anima con transform y el lazy-load nativo de iOS calcula la
+   posicion SIN la animacion: nunca dispara la carga de los retratos lejanos.
+   Cuando la seccion se acerca al viewport, pasamos sus fotos a carga inmediata. */
+(function () {
+  var carousels = document.querySelectorAll(".people-carousel");
+  if (!carousels.length) return;
+
+  function eagerLoad(root) {
+    Array.prototype.forEach.call(root.querySelectorAll('img[loading="lazy"]'), function (img) {
+      img.removeAttribute("loading");
+    });
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    Array.prototype.forEach.call(carousels, eagerLoad);
+    return;
+  }
+
+  var portraitObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      eagerLoad(entry.target);
+      portraitObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: "600px 0px" });
+
+  Array.prototype.forEach.call(carousels, function (c) { portraitObserver.observe(c); });
+})();
