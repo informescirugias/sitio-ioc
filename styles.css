@@ -6036,7 +6036,7 @@ body:not(.home-page) main > .section + .section {
 
 .home-about,
 .home-contact,
-body:not(.home-page) main > .section:not(.page-hero) {
+body:not(.home-page) main > .section:not(.page-hero):not(.section-band) {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 251, 252, 0.72));
 }
 
