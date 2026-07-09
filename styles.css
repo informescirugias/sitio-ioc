@@ -7016,3 +7016,13 @@ body:not(.home-page) main > .section:not(.page-hero) {
 .featured-actions { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .featured-read { color: #bfe0f7; font-weight: 700; font-size: 0.95rem; text-decoration: none; }
 .featured-read:hover { color: #fff; text-decoration: underline; }
+
+
+/* Títulos y fotos de tarjetas de campaña clickeables hacia la nota */
+.news-featured-body h2 a,
+.news-card h3 a { color: inherit; text-decoration: none; }
+.news-featured-body h2 a:hover,
+.news-featured-body h2 a:focus-visible,
+.news-card h3 a:hover,
+.news-card h3 a:focus-visible { text-decoration: underline; }
+.media-link { display: block; height: 100%; }
