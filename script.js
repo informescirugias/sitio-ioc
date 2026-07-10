@@ -211,7 +211,15 @@ if (profileCards.length) {
   const socioGroupLabel = makeProfileGroupLabel("Socios");
   const staffGroupLabel = makeProfileGroupLabel("Staff");
 
-  if (profileGrid) {
+  if (profileGrid && profileGrid.classList.contains("resident-grid")) {
+    /* Residentes: grupos por año de residencia, alfabético dentro de cada año */
+    [["1", "Primer año"], ["2", "Segundo año"], ["3", "Tercer año"]].forEach(([year, title]) => {
+      const yearCards = Array.from(profileCards).filter((card) => card.dataset.year === year).sort(byProfileName);
+      if (!yearCards.length) return;
+      profileGrid.appendChild(makeProfileGroupLabel(title));
+      yearCards.forEach((card) => profileGrid.appendChild(card));
+    });
+  } else if (profileGrid) {
     if (socioProfileCards.length) profileGrid.appendChild(socioGroupLabel);
     socioProfileCards.forEach((card) => profileGrid.appendChild(card));
     if (staffProfileCards.length) profileGrid.appendChild(staffGroupLabel);
