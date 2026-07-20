@@ -256,6 +256,19 @@ if (profileCards.length) {
     card.appendChild(action);
   });
 
+  /* Deep-link desde Servicios: ?area=KEY pre-filtra por especialidad (OR de varios tokens). */
+  const AREA_MAP = {
+    "cataratas-cornea-refractiva": { label: "Cataratas, córnea y refractiva", tokens: ["segmento", "catarata", "refractiva", "cornea", "trasplante"] },
+    "glaucoma": { label: "Glaucoma", tokens: ["glaucoma"] },
+    "retina": { label: "Retina y mácula", tokens: ["retina", "vitreo"] },
+    "neuro": { label: "Neurooftalmología", tokens: ["neuro"] },
+    "pediatrica": { label: "Oftalmología pediátrica", tokens: ["pediatrica", "estrabismo"] },
+    "parpados": { label: "Párpados y vías lagrimales", tokens: ["oculoplastica", "parpados"] }
+  };
+  let activeAreaTokens = null;
+  let areaBanner = null;
+  const cardSpecialtyTokens = (card) => (card.dataset.specialty || "").toLowerCase().split(/\s+/).filter(Boolean);
+
   const updateProfileList = () => {
     const term = normalizeText(profileSearch ? profileSearch.value.trim() : "");
     let visible = 0;
@@ -264,7 +277,9 @@ if (profileCards.length) {
       const specialties = normalizeText(card.dataset.specialty || "");
       const haystack = normalizeText(`${card.textContent} ${specialties}`);
       const matchesSearch = !term || haystack.includes(term);
-      const matchesFilter = activeProfileFilter === "all" || specialties.includes(activeProfileFilter);
+      const matchesFilter = activeAreaTokens
+        ? activeAreaTokens.some((t) => cardSpecialtyTokens(card).includes(t))
+        : (activeProfileFilter === "all" || specialties.includes(activeProfileFilter));
       const isVisible = matchesSearch && matchesFilter;
 
       card.classList.toggle("is-hidden", !isVisible);
@@ -288,6 +303,7 @@ if (profileCards.length) {
 
   profileFilters.forEach((button) => {
     button.addEventListener("click", () => {
+      if (activeAreaTokens) { activeAreaTokens = null; if (areaBanner) { areaBanner.remove(); areaBanner = null; } }
       activeProfileFilter = button.dataset.profileFilter || "all";
       profileFilters.forEach((item) => item.classList.toggle("is-active", item === button));
       updateProfileList();
@@ -296,6 +312,43 @@ if (profileCards.length) {
   });
 
   updateProfileList();
+
+  /* Aplicar ?area= cuando el visitante llega desde una tarjeta de Servicios. */
+  const clearArea = () => {
+    activeAreaTokens = null;
+    if (areaBanner) { areaBanner.remove(); areaBanner = null; }
+    activeProfileFilter = "all";
+    profileFilters.forEach((item) => item.classList.toggle("is-active", item.dataset.profileFilter === "all"));
+    updateProfileList();
+  };
+
+  try {
+    const areaKey = new URLSearchParams(window.location.search).get("area");
+    const area = areaKey ? AREA_MAP[areaKey] : null;
+    if (area && profileGrid) {
+      activeAreaTokens = area.tokens;
+      profileFilters.forEach((item) => item.classList.remove("is-active"));
+      const filtersBar = document.querySelector(".profile-filters");
+      areaBanner = document.createElement("div");
+      areaBanner.className = "area-banner";
+      areaBanner.innerHTML = "Mostrando especialistas en <strong></strong>";
+      areaBanner.querySelector("strong").textContent = area.label;
+      const clearBtn = document.createElement("button");
+      clearBtn.type = "button";
+      clearBtn.className = "area-clear";
+      clearBtn.textContent = "Ver todos ✕";
+      clearBtn.addEventListener("click", clearArea);
+      areaBanner.appendChild(clearBtn);
+      if (filtersBar) filtersBar.insertAdjacentElement("beforebegin", areaBanner);
+      updateProfileList();
+      trackEvent("service_to_specialists", { area: areaKey });
+      const target = filtersBar || profileGrid;
+      requestAnimationFrame(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: _prefersReducedMotion ? "auto" : "smooth" });
+      });
+    }
+  } catch (e) {}
 }
 
 if (osSearch && osItems.length) {
