@@ -924,3 +924,40 @@ if (newsTrack) {
 
   Array.prototype.forEach.call(carousels, function (c) { portraitObserver.observe(c); });
 })();
+
+/* ── "¿Te resultó útil esta nota?" — feedback 👍/👎 al pie de las notas.
+   Un voto por nota por navegador (localStorage). El voto viaja a GA4 como
+   evento nota_util / nota_no_util (el reporte de Eventos los muestra directo);
+   la nota queda identificada por el parámetro y por la URL de la página. ── */
+(function () {
+  var box = document.querySelector(".article-feedback");
+  if (!box) return;
+  var nota = box.dataset.nota || (window.location.pathname.split("/").filter(Boolean).pop() || "nota");
+  var KEY = "iocFeedback:" + nota;
+  var thanks = box.querySelector(".feedback-thanks");
+  var btns = Array.prototype.slice.call(box.querySelectorAll(".feedback-btn"));
+
+  function votoGuardado() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function guardar(voto) { try { localStorage.setItem(KEY, voto); } catch (e) {} }
+
+  function cerrarVotacion(voto, agradecer) {
+    btns.forEach(function (b) {
+      b.disabled = true;
+      b.classList.toggle("is-chosen", b.dataset.feedback === voto);
+    });
+    if (thanks && agradecer) thanks.hidden = false;
+  }
+
+  var previo = votoGuardado();
+  if (previo) cerrarVotacion(previo, false);
+
+  btns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (votoGuardado()) return;
+      var voto = btn.dataset.feedback;
+      guardar(voto);
+      trackEvent(voto === "util" ? "nota_util" : "nota_no_util", { nota: nota });
+      cerrarVotacion(voto, true);
+    });
+  });
+})();
