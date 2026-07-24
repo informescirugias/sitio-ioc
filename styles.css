@@ -7215,3 +7215,30 @@ body:not(.home-page) main > .section:not(.page-hero):not(.section-band) {
 html.js .featured-track .news-featured.reveal {
   transform: none;
 }
+
+/* Flechas laterales del rotador de novedades (mismos botones que la portada) */
+.featured-shell {
+  position: relative;
+}
+
+.news-nav-btn svg {
+  display: block;
+}
+
+.featured-shell .news-nav-btn[data-news-prev] {
+  left: -16px;
+}
+
+.featured-shell .news-nav-btn[data-news-next] {
+  right: -16px;
+}
+
+@media (min-width: 1280px) {
+  .featured-shell .news-nav-btn[data-news-prev] {
+    left: -58px;
+  }
+
+  .featured-shell .news-nav-btn[data-news-next] {
+    right: -58px;
+  }
+}
