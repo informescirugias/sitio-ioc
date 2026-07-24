@@ -6525,7 +6525,8 @@ body:not(.home-page) main > .section:not(.page-hero):not(.section-band) {
   text-decoration: none;
 }
 
-" →";
+.news-card-link::after {
+  content: " →";
 }
 
 .news-card-link:hover,
@@ -6678,6 +6679,8 @@ body:not(.home-page) main > .section:not(.page-hero):not(.section-band) {
   gap: 0;
   padding: 0;
   margin-bottom: 12px;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
 }
 
 .featured-dots {
@@ -7197,3 +7200,18 @@ body:not(.home-page) main > .section:not(.page-hero):not(.section-band) {
 .author-box .article-feedback .feedback-btn svg { width: 15px; height: 15px; }
 .author-box .feedback-thanks { margin: 0; flex-basis: 100%; text-align: center; font-size: 0.86rem; }
 .author-box .author-info { flex: 1 1 0; min-width: 240px; }
+
+/* ===== Encuadre en marcos fijos: la ventana muestra la parte alta de la foto (caras), no el centro ===== */
+.page-hero-card.photo-card.foto-natural img {
+  object-position: center top;
+}
+
+#estudios-complementarios .diagnosis-photo img {
+  object-position: center 22%;
+}
+
+/* Las diapositivas del rotador de novedades no se desplazan en vertical al revelarse:
+   ese translateY generaba 14px de desborde y el carrusel atrapaba el scroll de la rueda. */
+html.js .featured-track .news-featured.reveal {
+  transform: none;
+}
