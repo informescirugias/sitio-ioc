@@ -2966,8 +2966,8 @@ body:not(.home-page) main > .section-band:not(.page-hero) .print-bar p {
 
 .history-simple-video {
   overflow: hidden;
-  max-width: 980px;
-  margin: 0 auto;
+  max-width: 680px;
+  margin: 38px auto 0;
   border: 1px solid rgba(220, 228, 240, 0.94);
   border-radius: var(--radius);
   background: #071c30;
