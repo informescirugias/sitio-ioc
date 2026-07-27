@@ -4166,6 +4166,8 @@ html.js .reveal.is-visible {
 .video-thumbnail-link img {
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   display: block;
   transition: transform 0.35s ease;
 }
