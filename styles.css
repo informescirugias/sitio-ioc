@@ -3563,7 +3563,7 @@ body:not(.home-page) main > .section-band:not(.page-hero) .print-bar p {
 
 .contact-actions-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
 }
 
@@ -5563,6 +5563,10 @@ body:not(.home-page) main {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .contact-actions-grid .primary-contact {
+    grid-column: 1 / -1;
+  }
+
   .polished-faq .section-heading {
     position: static;
   }
@@ -7243,4 +7247,33 @@ html.js .featured-track .news-featured.reveal {
   .featured-shell .news-nav-btn[data-news-next] {
     right: -58px;
   }
+}
+
+/* Mapa del inicio: el espacio sobrante bajo el iframe pasa a ser un link a Google Maps */
+.home-map-frame {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.home-map-frame iframe {
+  flex: 1;
+}
+
+.map-open-link {
+  display: block;
+  text-align: center;
+  padding: 14px 10px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--brand);
+  text-decoration: none;
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+}
+
+.map-open-link:hover,
+.map-open-link:focus-visible {
+  background: #eaf4fc;
+  text-decoration: underline;
 }
