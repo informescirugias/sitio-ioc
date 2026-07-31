@@ -7277,3 +7277,78 @@ html.js .featured-track .news-featured.reveal {
   background: #eaf4fc;
   text-decoration: underline;
 }
+
+/* ===== Archivo de novedades (novedades-archivo.html) ===== */
+.archivo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin: 0 0 10px;
+}
+
+#archivoBuscar {
+  flex: 1 1 260px;
+  max-width: 430px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+#archivoBuscar:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+}
+
+.archivo-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.archivo-chip {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.archivo-chip:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.archivo-chip.is-active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #ffffff;
+}
+
+.archivo-count {
+  margin-left: auto;
+  color: #5a6c80;
+  font-size: 0.88rem;
+}
+
+.archivo-seccion {
+  margin-top: 30px;
+}
+
+.archivo-seccion h2 {
+  font-size: 1.3rem;
+  margin: 0 0 16px;
+}
+
+.archivo-vacio {
+  margin: 34px 0;
+  text-align: center;
+  color: #5a6c80;
+}
