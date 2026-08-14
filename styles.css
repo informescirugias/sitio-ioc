@@ -7599,3 +7599,24 @@ body:not(.home-page) main > .section-band:not(.page-hero) .resi-etapa h3 {
     grid-template-columns: 1fr;
   }
 }
+
+.resi-cifra {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.resi-cifra strong {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--brand);
+  letter-spacing: -0.02em;
+}
+
+.resi-cifra span {
+  color: var(--muted);
+  font-weight: 600;
+}
