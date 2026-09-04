@@ -7985,3 +7985,106 @@ body:not(.home-page) main > .section-band:not(.page-hero) {
     text-align: center;
   }
 }
+
+/* ===== Guardia oftalmológica ===== */
+.guardia-hero { text-align: center; padding-top: 66px; padding-bottom: 66px; }
+.guardia-hero .container { max-width: 860px; }
+.guardia-hero h1 { color: var(--white); font-size: clamp(1.9rem, 4.6vw, 2.9rem); margin: 6px auto 10px; }
+.guardia-hero .eyebrow { color: var(--aqua); letter-spacing: 0.16em; }
+.guardia-sub { color: rgba(255, 255, 255, 0.92); font-size: 1.06rem; margin: 0; }
+
+.guardia-donde {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.guardia-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.guardia-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.guardia-card.ahora::before { background: linear-gradient(90deg, var(--brand), var(--aqua)); }
+.guardia-card.fuera::before { background: linear-gradient(90deg, var(--gold), var(--coral)); }
+
+.guardia-chip {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--sky);
+  color: var(--brand-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.guardia-chip.alt { background: #fdf3e2; color: #8a6412; }
+
+.guardia-card h3 { margin: 0 0 8px; font-size: 1.3rem; }
+
+.guardia-dir {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--brand-strong);
+  margin: 0 0 12px;
+  line-height: 1.35;
+}
+
+.guardia-dir span { font-weight: 500; color: var(--muted); font-size: 0.95rem; }
+.guardia-card p { color: var(--ink); line-height: 1.6; margin: 0 0 16px; }
+
+.guardia-nota {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--brand);
+  border-radius: var(--radius);
+  background: var(--sky);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.guardia-nota.mini { font-size: 0.9rem; margin-top: 16px; }
+.guardia-nota.claro { background: rgba(255, 255, 255, 0.94); }
+
+.guardia-motivos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.guardia-motivo {
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--coral);
+}
+
+.guardia-motivo strong { display: block; color: var(--ink); margin-bottom: 6px; }
+.guardia-motivo span { color: var(--muted); font-size: 0.94rem; line-height: 1.55; }
+
+.guardia-dos-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 34px;
+}
+
+.guardia-lista { margin: 0 0 16px; padding-left: 20px; line-height: 1.9; color: var(--ink); }
+
+body:not(.home-page) main > .section-band:not(.page-hero) .guardia-motivo strong { color: var(--ink); }
+body:not(.home-page) main > .section-band:not(.page-hero) .guardia-motivo span,
+body:not(.home-page) main > .section-band:not(.page-hero) .guardia-nota.claro { color: var(--muted); }
