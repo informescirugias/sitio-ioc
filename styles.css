@@ -8088,3 +8088,9 @@ body:not(.home-page) main > .section-band:not(.page-hero) {
 body:not(.home-page) main > .section-band:not(.page-hero) .guardia-motivo strong { color: var(--ink); }
 body:not(.home-page) main > .section-band:not(.page-hero) .guardia-motivo span,
 body:not(.home-page) main > .section-band:not(.page-hero) .guardia-nota.claro { color: var(--muted); }
+
+/* intro de la portada: renglones más largos (menos líneas) */
+.home-intro-centered .intro-lead { /* intro-lead ancho */
+  max-width: 820px;
+  margin: 0 auto;
+}
