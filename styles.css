@@ -490,7 +490,7 @@ body:not(.home-page) main > .section-band:not(.page-hero) .study-list p {
 .hero-media {
   background:
     linear-gradient(90deg, rgba(3, 43, 77, 0.9), rgba(3, 43, 77, 0.58) 48%, rgba(3, 43, 77, 0.08)),
-    url("assets/FONDO-azul.jpg") right center/cover;
+    url("assets/FONDO-azul.webp") right center/cover;
   transform: scale(1.01);
 }
 
@@ -3814,7 +3814,7 @@ body:not(.home-page) main > .section-band:not(.page-hero) .print-bar p {
 .consent-banner {
   position: relative;
   padding: 40px 0;
-  background-image: url("assets/photos/consentimiento.jpg");
+  background-image: url("assets/photos/consentimiento.webp");
   background-size: cover;
   background-position: center top;
   background-color: #092743;
@@ -7619,4 +7619,369 @@ body:not(.home-page) main > .section-band:not(.page-hero) .resi-etapa h3 {
 .resi-cifra span {
   color: var(--muted);
   font-weight: 600;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* ══ CAPA MODERNA 2026 — movimiento y brillo (aditiva) ═════════ */
+/* ═══════════════════════════════════════════════════════════════ */
+
+/* 1) Transiciones entre páginas (View Transitions, nativas del navegador) */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+::view-transition-old(root) {
+  animation: 160ms ease-in both vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 260ms ease-out both vt-fade-in;
+}
+
+/* 2) Aparición en cascada: el JS asigna --stagger a los hijos de las grillas */
+html.js .reveal,
+html.js .reveal-left,
+html.js .reveal-right,
+html.js .reveal-scale {
+  transition-delay: var(--stagger, 0ms);
+}
+
+/* 3) Header reactivo al scroll */
+.site-header {
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.site-header .topbar {
+  max-height: 64px;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+@media (min-width: 900px) {
+  .site-header.is-scrolled .topbar {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px rgba(4, 58, 105, 0.1);
+  background: rgba(255, 255, 255, 0.97);
+}
+
+/* ítem activo del menú con subrayado animado */
+.nav-menu a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--aqua));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s ease;
+}
+
+.nav-menu a:not(.nav-cta):not(.is-active):hover::after {
+  transform: scaleX(1);
+}
+
+/* 4) Hero con vida: parallax suave + gradiente que respira + titular en cascada */
+.hero-media {
+  transform: scale(1.08) translate3d(0, var(--py, 0px), 0);
+  will-change: transform;
+}
+
+@keyframes heroBreathe {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.hero-overlay {
+  background-size: 200% 200%;
+  animation: heroBreathe 18s ease-in-out infinite alternate;
+}
+
+html.js .hero-content > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease-out, ease), transform 0.7s var(--ease-out, ease);
+}
+
+html.js .hero-content.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .hero-content.is-visible > :nth-child(1) { transition-delay: 0.05s; }
+html.js .hero-content.is-visible > :nth-child(2) { transition-delay: 0.18s; }
+html.js .hero-content.is-visible > :nth-child(3) { transition-delay: 0.32s; }
+html.js .hero-content.is-visible > :nth-child(4) { transition-delay: 0.46s; }
+
+/* 5) Tarjetas con brillo: elevación + borde luminoso + zoom de foto */
+.news-card,
+.service-card,
+.profile-card,
+.contact-action,
+.home-contact-card,
+.resi-dato,
+.resi-hub-card,
+.resi-mini,
+.archivo-card {
+  transition: transform 0.35s var(--ease-out, ease), box-shadow 0.35s var(--ease-out, ease), border-color 0.35s ease;
+}
+
+.news-card:hover,
+.service-card:hover,
+.profile-card:hover,
+.contact-action:hover,
+.home-contact-card:hover,
+.resi-dato:hover,
+.resi-hub-card:hover,
+.resi-mini:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 22px 48px rgba(4, 58, 105, 0.16),
+    0 0 0 1px rgba(53, 211, 195, 0.45);
+}
+
+.news-media {
+  overflow: hidden;
+}
+
+.news-media img,
+.related-thumb img {
+  transition: transform 0.6s var(--ease-out, ease), filter 0.5s ease;
+}
+
+.news-card:hover .news-media img,
+.related-card:hover .related-thumb img {
+  transform: scale(1.05);
+}
+
+/* tilt 3D sutil en las tarjetas de servicios (solo mouse fino) */
+@media (hover: hover) and (pointer: fine) {
+  .home-services .service-card,
+  .specialty-grid .service-card {
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease, box-shadow 0.35s ease;
+  }
+
+  .home-services .service-card.is-tilting,
+  .specialty-grid .service-card.is-tilting {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-5px);
+  }
+}
+
+/* 6) Botones con intención: brillo diagonal + flechas que avanzan */
+.button.primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+}
+
+.button.primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.button.primary:hover::after,
+.button.primary:focus-visible::after {
+  left: 125%;
+}
+
+.button.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(2, 99, 170, 0.3);
+}
+
+.news-card-link::after,
+.featured-read,
+.text-link {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.news-card:hover .news-card-link::after,
+.featured-read:hover,
+.text-link:hover {
+  transform: translateX(4px);
+}
+
+/* 7) Blur-up de imágenes perezosas: nítidas al cargar */
+html.js img.is-blur {
+  filter: blur(12px);
+  transform: scale(1.04);
+}
+
+html.js img.is-blur.is-loaded {
+  filter: blur(0);
+  transform: none;
+}
+
+html.js .news-media img,
+html.js .article-cover img,
+html.js .related-thumb img,
+html.js .photo-card img {
+  transition: filter 0.55s ease, transform 0.6s var(--ease-out, ease);
+}
+
+/* 8) Ondas lentas en las bandas azules */
+@keyframes bandDrift {
+  from { background-position: 0 0, 40% 50%; }
+  to { background-position: 0 0, 60% 50%; }
+}
+
+body:not(.home-page) main > .section-band:not(.page-hero) {
+  animation: bandDrift 48s ease-in-out infinite alternate;
+}
+
+/* 9) Accesibilidad: sin movimiento para quien lo pide */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+
+  .hero-overlay,
+  body:not(.home-page) main > .section-band:not(.page-hero) {
+    animation: none !important;
+  }
+
+  .hero-media {
+    transform: scale(1.01) !important;
+  }
+
+  html.js .hero-content > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html.js img.is-blur {
+    filter: none;
+    transform: none;
+  }
+
+  .news-card:hover,
+  .service-card:hover,
+  .profile-card:hover,
+  .contact-action:hover,
+  .home-contact-card:hover,
+  .resi-dato:hover,
+  .resi-hub-card:hover,
+  .resi-mini:hover,
+  .button.primary:hover {
+    transform: none;
+  }
+}
+
+/* ── Extras 2026: menú móvil animado · footer con acento · 404 ── */
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes menuItemIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 920px) {
+  .nav-menu.is-open {
+    animation: menuIn 0.28s ease both;
+  }
+
+  .nav-menu.is-open a {
+    animation: menuItemIn 0.38s ease both;
+  }
+
+  .nav-menu.is-open a:nth-child(1) { animation-delay: 0.04s; }
+  .nav-menu.is-open a:nth-child(2) { animation-delay: 0.09s; }
+  .nav-menu.is-open a:nth-child(3) { animation-delay: 0.14s; }
+  .nav-menu.is-open a:nth-child(4) { animation-delay: 0.19s; }
+  .nav-menu.is-open a:nth-child(5) { animation-delay: 0.24s; }
+  .nav-menu.is-open a:nth-child(6) { animation-delay: 0.29s; }
+  .nav-menu.is-open a:nth-child(7) { animation-delay: 0.34s; }
+}
+
+.footer {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(14, 40, 64, 0.97), rgba(14, 40, 64, 0.99)),
+    url("assets/waves-section-wide.svg") center/cover no-repeat, #0e2840;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand), var(--aqua), var(--brand));
+  background-size: 200% 100%;
+  animation: bandDrift 12s linear infinite alternate;
+}
+
+.footer-grid div > a:not(.footer-brand) {
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-grid div > a:not(.footer-brand):hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.error-code {
+  font-size: clamp(4.5rem, 14vw, 8rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  margin: 0 0 8px;
+  background: linear-gradient(135deg, var(--brand), var(--aqua));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-menu.is-open,
+  .nav-menu.is-open a,
+  .footer::before {
+    animation: none !important;
+  }
+}
+
+/* nav-cta centrado en el menu movil (anula el margen izquierdo del escritorio) */
+@media (max-width: 920px) {
+  .nav-menu .nav-cta {
+    margin: 10px 0 0;
+    align-self: stretch;
+    width: auto;
+    text-align: center;
+  }
 }

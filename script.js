@@ -961,3 +961,155 @@ if (newsTrack) {
     });
   });
 })();
+
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* ══ CAPA MODERNA 2026 — movimiento (aditiva, sin dependencias) ═ */
+/* ═══════════════════════════════════════════════════════════════ */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* — A. Aparición en cascada dentro de grillas — */
+  var GRILLAS = ".news-grid, .specialty-grid, .service-grid, .contact-actions-grid, .home-contact-cards, .resi-datos, .resi-plan, .resi-mini-grid, .resi-hub-grid, .profile-grid, .archivo-seccion .news-grid, .prep-grid, .visual-grid";
+  var nuevos = [];
+  document.querySelectorAll(GRILLAS).forEach(function (grid) {
+    var hijos = [].slice.call(grid.children).filter(function (el) { return el.nodeType === 1; });
+    if (hijos.length < 2) return;
+    hijos.forEach(function (el, i) {
+      el.style.setProperty("--stagger", Math.min(i, 9) * 70 + "ms");
+      if (!el.classList.contains("reveal") && !el.classList.contains("reveal-left") &&
+          !el.classList.contains("reveal-right") && !el.classList.contains("reveal-scale")) {
+        el.classList.add("reveal");
+        nuevos.push(el);
+      }
+    });
+  });
+  if (nuevos.length) {
+    if ("IntersectionObserver" in window && !reduce) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0, rootMargin: "0px 0px -6% 0px" });
+      nuevos.forEach(function (el) { obs.observe(el); });
+    } else {
+      nuevos.forEach(function (el) { el.classList.add("is-visible"); });
+    }
+  }
+
+  /* — B. Header reactivo + ítem activo del menú — */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var ticking = false;
+    var onScroll = function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        header.classList.toggle("is-scrolled", window.scrollY > 40);
+        ticking = false;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+  var ruta = location.pathname.replace(/\/index\.html$/, "/").toLowerCase();
+  var archivo = ruta.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-menu a:not(.nav-cta)").forEach(function (a) {
+    var destino = (a.getAttribute("href") || "").split("/").pop().split("#")[0].toLowerCase();
+    var activo = destino === archivo || (archivo === "" && destino === "index.html") ||
+                 (destino === "novedades.html" && (ruta.indexOf("/novedades/") > -1 || archivo === "novedades-archivo.html")) ||
+                 (destino === "informacion.html" && (ruta.indexOf("/docencia/") > -1 || archivo === "historia.html")) ||
+                 (destino === "quienes-somos.html" && (ruta.indexOf("/equipo/") > -1 || archivo === "profesionales.html" || archivo === "residentes.html")) ||
+                 (destino === "servicios.html" && (archivo === "estudios.html" || archivo === "aparatologia.html"));
+    if (activo) { a.classList.add("is-active"); a.setAttribute("aria-current", "page"); }
+  });
+
+  /* — C. Contadores: también los que empiezan con "+" y los marcados con data-count — */
+  var extra = document.querySelectorAll("[data-count], .resi-cifra strong");
+  if ("IntersectionObserver" in window && extra.length) {
+    var animar = function (el) {
+      var raw = (el.textContent || "").trim();
+      var m = raw.match(/^([+]?)(\d{1,6})(.*)$/);
+      if (!m) return;
+      var pre = m[1], target = parseInt(m[2], 10), suf = m[3] || "";
+      if (reduce || target === 0) { el.textContent = pre + target + suf; return; }
+      var dur = Math.min(1700, 700 + target * 6);
+      var t0 = performance.now();
+      var tick = function (now) {
+        var t = Math.min(1, (now - t0) / dur);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = pre + Math.round(eased * target) + suf;
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    var obsC = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = "1";
+          animar(e.target);
+          obsC.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    extra.forEach(function (el) { obsC.observe(el); });
+  }
+
+  /* — D. Parallax suave del hero — */
+  var heroMedia = document.querySelector(".hero-media");
+  if (heroMedia && !reduce) {
+    var hero = heroMedia.closest(".hero");
+    var pTick = false;
+    var parallax = function () {
+      if (pTick) return;
+      pTick = true;
+      requestAnimationFrame(function () {
+        var alto = hero ? hero.offsetHeight : 600;
+        var y = Math.min(window.scrollY, alto);
+        heroMedia.style.setProperty("--py", (y * 0.18).toFixed(1) + "px");
+        pTick = false;
+      });
+    };
+    window.addEventListener("scroll", parallax, { passive: true });
+    parallax();
+  }
+
+  /* — E. Tilt 3D sutil en tarjetas de servicios (solo mouse fino) — */
+  if (finePointer && !reduce) {
+    document.querySelectorAll(".home-services .service-card, .specialty-grid .service-card").forEach(function (card) {
+      var raf = null, rx = 0, ry = 0;
+      var flush = function () {
+        card.style.setProperty("--rx", rx.toFixed(2) + "deg");
+        card.style.setProperty("--ry", ry.toFixed(2) + "deg");
+        raf = null;
+      };
+      card.addEventListener("pointerenter", function () { card.classList.add("is-tilting"); });
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        if (!r.width || !r.height) return;
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        rx = -py * 6; ry = px * 6;
+        if (raf === null) raf = requestAnimationFrame(flush);
+      }, { passive: true });
+      card.addEventListener("pointerleave", function () {
+        rx = 0; ry = 0;
+        if (raf !== null) cancelAnimationFrame(raf);
+        flush();
+        card.classList.remove("is-tilting");
+      });
+    });
+  }
+
+  /* — F. Blur-up en imágenes perezosas — */
+  if (!reduce) {
+    document.querySelectorAll(".news-media img[loading='lazy'], .article-cover img, .related-thumb img[loading='lazy'], .photo-card img").forEach(function (img) {
+      if (img.complete && img.naturalWidth > 0) return;
+      img.classList.add("is-blur");
+      var listo = function () { img.classList.add("is-loaded"); };
+      img.addEventListener("load", listo, { once: true });
+      img.addEventListener("error", listo, { once: true });
+    });
+  }
+})();
