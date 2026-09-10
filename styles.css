@@ -8094,3 +8094,66 @@ body:not(.home-page) main > .section-band:not(.page-hero) .guardia-nota.claro { 
   max-width: 820px;
   margin: 0 auto;
 }
+
+/* ===== Páginas de especialidad ===== */
+.esp-main .section { padding-top: 44px; padding-bottom: 44px; }
+.esp-main .section-heading { margin-bottom: 16px; }
+body:not(.home-page) main.esp-main > .section-band.esp-hero { padding: 52px 0 50px; text-align: center; }
+body:not(.home-page) main.esp-main > .section-band.esp-cta { padding: 46px 0 50px; text-align: center; }
+.esp-hero .container, .esp-cta .container { max-width: 860px; }
+.esp-hero h1 { color: var(--white); font-size: clamp(1.9rem, 4.4vw, 2.7rem); margin: 6px auto 10px; }
+.esp-hero .eyebrow, .esp-cta .eyebrow { color: var(--aqua); letter-spacing: 0.16em; }
+.esp-sub { color: rgba(255, 255, 255, 0.92); font-size: 1.06rem; margin: 0 auto; max-width: 62ch; }
+.esp-hero-actions { justify-content: center; margin-top: 22px; }
+
+.esp-intro { max-width: 760px; font-size: 1.06rem; line-height: 1.7; color: var(--ink); margin: 0 0 22px; }
+
+.esp-dos-col { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: center; margin-bottom: 26px; }
+@media (min-width: 900px) { .esp-dos-col { grid-template-columns: 1.05fr 0.95fr; gap: 44px; } }
+@media (max-width: 899px) { .esp-dos-col .esp-foto { order: -1; } }
+.esp-dos-col .esp-intro { margin-bottom: 0; }
+.esp-foto { margin: 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.esp-foto img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.esp-conds { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 600px) { .esp-conds { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .esp-conds { grid-template-columns: repeat(3, 1fr); } }
+.esp-cond {
+  padding: 16px 18px; border-radius: var(--radius); background: var(--white);
+  border: 1px solid var(--line); border-left: 4px solid var(--brand); box-shadow: var(--shadow);
+}
+.esp-cond strong { display: block; color: var(--ink); margin-bottom: 4px; }
+.esp-cond span { color: var(--muted); font-size: 0.93rem; line-height: 1.5; }
+
+.esp-leer { margin-top: 26px; }
+.esp-leer .eyebrow { margin: 0 0 10px; }
+.esp-notas { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 600px) { .esp-notas { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .esp-notas { grid-template-columns: repeat(3, 1fr); } }
+.esp-nota {
+  display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center;
+  padding: 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white);
+  text-decoration: none; color: inherit; box-shadow: var(--shadow);
+  transition: transform 0.3s var(--ease-out, ease), box-shadow 0.3s ease;
+}
+.esp-nota:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(4, 58, 105, 0.14); }
+.esp-nota img { width: 96px; height: 72px; object-fit: cover; border-radius: 6px; display: block; }
+.esp-nota span { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.esp-nota small { align-self: flex-start; }
+.esp-nota strong { color: var(--ink); font-size: 0.95rem; line-height: 1.35; }
+
+.esp-cta h2 { color: var(--white); margin: 6px 0 10px; }
+.esp-band-text { max-width: 720px; line-height: 1.7; margin: 0 auto; }
+.esp-band-link { color: var(--aqua); font-weight: 700; text-decoration: none; }
+.esp-band-link:hover { text-decoration: underline; }
+
+/* accesos: aviso en profesionales y bloque en bios */
+.profile-area-link {
+  flex-basis: 100%; grid-column: 1 / -1; margin: 10px 0 0; padding: 11px 16px;
+  border-left: 3px solid var(--brand); border-radius: var(--radius); background: var(--sky); font-size: 0.95rem;
+}
+.profile-area-link a { color: var(--brand-strong); font-weight: 700; text-decoration: none; }
+.profile-area-link a:hover { text-decoration: underline; }
+.bio-esp { margin: 4px 0 22px; padding: 16px 18px; border-radius: var(--radius); background: var(--sky); border-left: 3px solid var(--brand); }
+.bio-esp .eyebrow { margin: 0 0 6px; }
+.bio-esp-link { display: block; padding: 4px 0; color: var(--brand-strong); font-weight: 700; text-decoration: none; }
+.bio-esp-link:hover { text-decoration: underline; }

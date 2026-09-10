@@ -269,6 +269,32 @@ if (profileCards.length) {
   let areaBanner = null;
   const cardSpecialtyTokens = (card) => (card.dataset.specialty || "").toLowerCase().split(/\s+/).filter(Boolean);
 
+  /* Aviso con link a la página de la especialidad activa (filtro o ?area=) */
+  var areaLinkEl = document.getElementById("profileAreaLink");
+  function syncAreaLink() {
+    if (!areaLinkEl) return;
+    var key = null;
+    var keys = Object.keys(AREA_MAP);
+    for (var i = 0; i < keys.length; i += 1) {
+      var entry = AREA_MAP[keys[i]];
+      if (activeAreaTokens ? entry.tokens === activeAreaTokens : (activeProfileFilter !== "all" && entry.tokens.indexOf(activeProfileFilter) > -1)) {
+        key = keys[i];
+        break;
+      }
+    }
+    if (!key) {
+      areaLinkEl.hidden = true;
+      areaLinkEl.textContent = "";
+      return;
+    }
+    areaLinkEl.textContent = "";
+    var link = document.createElement("a");
+    link.href = "especialidades/" + key + "/index.html";
+    link.textContent = "Conocé la especialidad: " + AREA_MAP[key].label + " — diagnóstico, estudios y tratamiento →";
+    areaLinkEl.appendChild(link);
+    areaLinkEl.hidden = false;
+  }
+
   const updateProfileList = () => {
     const term = normalizeText(profileSearch ? profileSearch.value.trim() : "");
     let visible = 0;
@@ -292,6 +318,8 @@ if (profileCards.length) {
     if (profileCount) {
       profileCount.textContent = `${visible} profesional${visible === 1 ? "" : "es"} visible${visible === 1 ? "" : "s"}`;
     }
+
+    syncAreaLink();
   };
 
   if (profileSearch) {
