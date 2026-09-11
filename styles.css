@@ -8157,3 +8157,10 @@ body:not(.home-page) main.esp-main > .section-band.esp-cta { padding: 46px 0 50p
 .bio-esp .eyebrow { margin: 0 0 6px; }
 .bio-esp-link { display: block; padding: 4px 0; color: var(--brand-strong); font-weight: 700; text-decoration: none; }
 .bio-esp-link:hover { text-decoration: underline; }
+
+/* grilla de especialidades: 8 tarjetas → 4 columnas en escritorio (4+4), 2 en tablet (2×4), 1 en móvil */
+@media (min-width: 921px) {
+  .service-grid.specialty-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .specialty-grid .service-card h3 { font-size: 0.94rem; }
+  .specialty-grid .service-card p { font-size: 0.88rem; }
+}

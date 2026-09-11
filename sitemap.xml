@@ -55,6 +55,18 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://iocp.com.ar/especialidades/ojo-seco-superficie-ocular/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://iocp.com.ar/especialidades/consulta-oftalmologica/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://iocp.com.ar/profesionales.html</loc>
     <lastmod>2026-06-09</lastmod>
     <priority>0.8</priority>

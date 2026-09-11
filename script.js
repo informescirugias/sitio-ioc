@@ -263,7 +263,9 @@ if (profileCards.length) {
     "retina": { label: "Retina y mácula", tokens: ["retina", "vitreo"] },
     "neuro": { label: "Neurooftalmología", tokens: ["neuro"] },
     "pediatrica": { label: "Oftalmología pediátrica", tokens: ["pediatrica", "estrabismo"] },
-    "parpados": { label: "Párpados y vías lagrimales", tokens: ["oculoplastica", "parpados"] }
+    "parpados": { label: "Párpados y vías lagrimales", tokens: ["oculoplastica", "parpados"] },
+    "ojo-seco-superficie-ocular": { label: "Ojo seco y superficie ocular", tokens: ["superficie", "seco"] },
+    "consulta-oftalmologica": { label: "Consulta oftalmológica general", tokens: ["general"] }
   };
   let activeAreaTokens = null;
   let areaBanner = null;
