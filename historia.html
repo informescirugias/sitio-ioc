@@ -21,9 +21,7 @@
     <meta property="og:url" content="https://iocp.com.ar/historia.html" />
     <meta property="og:image" content="https://iocp.com.ar/assets/photos/Fundadores.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
       <!-- Google Analytics 4 -->
@@ -53,8 +51,8 @@
         </div>
       </div>
       <nav class="nav" aria-label="Navegación principal">
-        <a class="brand" href="index.html" aria-label="Instituto Oftalmológico de Córdoba">
-          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+        <a class="brand" href="index.html">
+          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
           <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -128,7 +126,7 @@
 
           <div class="history-simple-video">
             <a class="video-thumbnail-link" href="https://www.youtube.com/watch?v=ewwZ0SduPao" target="_blank" rel="noopener" aria-label="Ver video en YouTube: Historia del Instituto Oftalmológico de Córdoba">
-              <img src="assets/photos/Fundadores.webp" alt="Los fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" />
+              <img src="assets/photos/Fundadores.webp" srcset="assets/photos/Fundadores-240.webp 240w, assets/photos/Fundadores-480.webp 480w, assets/photos/Fundadores-800.webp 800w, assets/photos/Fundadores.webp 2920w" sizes="(max-width: 900px) 92vw, 640px" alt="Los fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" />
               <span class="video-play-btn" aria-hidden="true">
                 <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74A8.52 8.52 0 0 0 60.65 1.8C55.35 0 34 0 34 0S12.65 0 7.35 1.8A8.52 8.52 0 0 0 1.48 7.74C0 13.08 0 24 0 24s0 10.92 1.48 16.26a8.52 8.52 0 0 0 5.87 5.94C12.65 48 34 48 34 48s21.35 0 26.65-1.8a8.52 8.52 0 0 0 5.87-5.94C68 34.92 68 24 68 24s0-10.92-1.48-16.26z" fill="#ff0000"/><path d="M27 34l18-10-18-10v20z" fill="#fff"/></svg>
               </span>
@@ -143,7 +141,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html">
-            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
             <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
           </a>
           <p>Historia institucional, valores y trayectoria.</p>

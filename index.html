@@ -37,7 +37,7 @@
       "description": "Instituto oftalmológico en Nueva Córdoba con más de 50 años de trayectoria. Especialidades, estudios complementarios y cirugías oculares.",
       "url": "https://iocp.com.ar",
       "logo": "https://iocp.com.ar/assets/ioc-logo.png",
-      "telephone": "+5493516662384",
+      "telephone": ["+543515707090", "+5493516662384"],
       "email": "info@iocp.com.ar",
       "foundingDate": "1974",
       "address": {
@@ -63,9 +63,7 @@
     </script>
 
     <link rel="preload" as="image" href="assets/FONDO-azul.webp" media="(min-width: 641px)" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
       <!-- Google Analytics 4 -->
@@ -95,9 +93,9 @@
         </div>
       </div>
       <nav class="nav" aria-label="Navegación principal">
-        <a class="brand" href="index.html" aria-label="Instituto Oftalmológico de Córdoba">
+        <a class="brand" href="index.html">
           <span class="brand-logo-frame">
-            <img src="assets/ioc-logo-symbol.png" alt="" />
+            <img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" />
           </span>
           <span class="brand-copy">
             <strong>Instituto Oftalmológico</strong>
@@ -174,19 +172,19 @@
         <div class="container visual-showcase">
           <a class="visual-tile" href="quienes-somos.html">
             <figure>
-              <img src="assets/photos/optimized/consulta-frontal-1200.webp" alt="Profesional del IOC realizando un examen oftalmológico con luz frontal" width="675" height="1200" loading="lazy" decoding="async" />
+              <img src="assets/photos/optimized/consulta-frontal-1200.webp" srcset="assets/photos/optimized/consulta-frontal-1200-240.webp 240w, assets/photos/optimized/consulta-frontal-1200-480.webp 480w, assets/photos/optimized/consulta-frontal-1200.webp 675w" sizes="(max-width: 900px) 92vw, 640px" alt="Profesional del IOC realizando un examen oftalmológico con luz frontal" width="675" height="1200" loading="lazy" decoding="async" />
               <figcaption><span>Equipo médico</span><strong>Atención clínica con mirada especializada.</strong></figcaption>
             </figure>
           </a>
           <a class="visual-tile" href="estudios.html#estudios">
             <figure>
-              <img src="assets/photos/optimized/medir-lentes-1200.webp" alt="Estudio oftalmológico — medición de lentes con frontofocómetro Topcon" width="1200" height="799" loading="lazy" decoding="async" />
+              <img src="assets/photos/optimized/medir-lentes-1200.webp" srcset="assets/photos/optimized/medir-lentes-1200-240.webp 240w, assets/photos/optimized/medir-lentes-1200-480.webp 480w, assets/photos/optimized/medir-lentes-1200-800.webp 800w, assets/photos/optimized/medir-lentes-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 640px" alt="Estudio oftalmológico — medición de lentes con frontofocómetro Topcon" width="1200" height="799" loading="lazy" decoding="async" />
               <figcaption><span>Estudios</span><strong>Diagnóstico complementario ordenado y preciso.</strong></figcaption>
             </figure>
           </a>
           <a class="visual-tile" href="servicios.html#aparatologia">
             <figure>
-              <img src="assets/photos/optimized/cirugia-microscopio-1200.webp" alt="Cirugía oftalmológica con microscopio quirúrgico en quirófano del IOC" width="1200" height="2133" loading="lazy" decoding="async" />
+              <img src="assets/photos/optimized/cirugia-microscopio-1200.webp" srcset="assets/photos/optimized/cirugia-microscopio-1200-240.webp 240w, assets/photos/optimized/cirugia-microscopio-1200-480.webp 480w, assets/photos/optimized/cirugia-microscopio-1200-800.webp 800w, assets/photos/optimized/cirugia-microscopio-1200.webp 1200w" sizes="(max-width: 900px) 92vw, 640px" alt="Cirugía oftalmológica con microscopio quirúrgico en quirófano del IOC" width="1200" height="2133" loading="lazy" decoding="async" />
               <figcaption><span>Tratamientos</span><strong>Tecnología y criterio médico en cada indicación.</strong></figcaption>
             </figure>
           </a>
@@ -203,7 +201,7 @@
           <div class="news-carousel">
             <div class="news-track" id="newsTrack" aria-label="Últimas novedades del Instituto">
             <article class="news-card">
-              <div class="news-media"><a class="media-link" href="novedades/estrabismo-que-es-cuando-consultar/index.html"><img src="assets/photos/novedades/estrabismo-ioc.webp" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></a></div>
+              <div class="news-media"><a class="media-link" href="novedades/estrabismo-que-es-cuando-consultar/index.html"><img src="assets/photos/novedades/estrabismo-ioc.webp" srcset="assets/photos/novedades/estrabismo-ioc-240.webp 240w, assets/photos/novedades/estrabismo-ioc-480.webp 480w, assets/photos/novedades/estrabismo-ioc-800.webp 800w, assets/photos/novedades/estrabismo-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></a></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">Septiembre 2026</span></div>
                 <h3><a href="novedades/estrabismo-que-es-cuando-consultar/index.html">Estrabismo: qué es y por qué consultar a tiempo</a></h3>
@@ -212,7 +210,7 @@
               </div>
             </article>
             <article class="news-card">
-              <div class="news-media"><a class="media-link" href="novedades/blefaritis-parpados-inflamados/index.html"><img src="assets/photos/novedades/blefaritis-ioc.webp" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></a></div>
+              <div class="news-media"><a class="media-link" href="novedades/blefaritis-parpados-inflamados/index.html"><img src="assets/photos/novedades/blefaritis-ioc.webp" srcset="assets/photos/novedades/blefaritis-ioc-240.webp 240w, assets/photos/novedades/blefaritis-ioc-480.webp 480w, assets/photos/novedades/blefaritis-ioc-800.webp 800w, assets/photos/novedades/blefaritis-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></a></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">Agosto 2026</span></div>
                 <h3><a href="novedades/blefaritis-parpados-inflamados/index.html">Blefaritis: por qué se inflaman los párpados y cómo cuidarlos</a></h3>
@@ -221,7 +219,7 @@
               </div>
             </article>
             <article class="news-card">
-              <div class="news-media"><a class="media-link" href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html"><img src="assets/photos/novedades/presbicia-ioc.webp" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></a></div>
+              <div class="news-media"><a class="media-link" href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html"><img src="assets/photos/novedades/presbicia-ioc.webp" srcset="assets/photos/novedades/presbicia-ioc-240.webp 240w, assets/photos/novedades/presbicia-ioc-480.webp 480w, assets/photos/novedades/presbicia-ioc-800.webp 800w, assets/photos/novedades/presbicia-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></a></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">Agosto 2026</span></div>
                 <h3><a href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html">Presbicia: por qué aparece a los 40 y cómo se corrige</a></h3>
@@ -230,7 +228,7 @@
               </div>
             </article>
             <article class="news-card">
-              <div class="news-media"><a class="media-link" href="novedades/cirugia-laser-miopia-astigmatismo/index.html"><img src="assets/photos/novedades/cirugia-laser-ioc.webp" alt="Paciente durante una topografía corneal previa a una cirugía refractiva" loading="lazy" width="1200" height="751" /></a></div>
+              <div class="news-media"><a class="media-link" href="novedades/cirugia-laser-miopia-astigmatismo/index.html"><img src="assets/photos/novedades/cirugia-laser-ioc.webp" srcset="assets/photos/novedades/cirugia-laser-ioc-240.webp 240w, assets/photos/novedades/cirugia-laser-ioc-480.webp 480w, assets/photos/novedades/cirugia-laser-ioc-800.webp 800w, assets/photos/novedades/cirugia-laser-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Paciente durante una topografía corneal previa a una cirugía refractiva" loading="lazy" width="1200" height="751" /></a></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">Julio 2026</span></div>
                 <h3><a href="novedades/cirugia-laser-miopia-astigmatismo/index.html">Cirugía láser: ¿podés dejar los anteojos?</a></h3>
@@ -239,7 +237,7 @@
               </div>
             </article>
             <article class="news-card">
-              <div class="news-media"><a class="media-link" href="novedades/cataratas-que-son-cuando-operarse/index.html"><img src="assets/photos/novedades/cataratas-ioc.webp" alt="Mujer mayor sonriente leyendo el diario junto a la ventana" loading="lazy" width="1200" height="751" /></a></div>
+              <div class="news-media"><a class="media-link" href="novedades/cataratas-que-son-cuando-operarse/index.html"><img src="assets/photos/novedades/cataratas-ioc.webp" srcset="assets/photos/novedades/cataratas-ioc-240.webp 240w, assets/photos/novedades/cataratas-ioc-480.webp 480w, assets/photos/novedades/cataratas-ioc-800.webp 800w, assets/photos/novedades/cataratas-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Mujer mayor sonriente leyendo el diario junto a la ventana" loading="lazy" width="1200" height="751" /></a></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">Julio 2026</span></div>
                 <h3><a href="novedades/cataratas-que-son-cuando-operarse/index.html">Cataratas: qué son y cuándo operarse</a></h3>
@@ -248,7 +246,7 @@
               </div>
             </article>
             <article class="news-card">
-              <div class="news-media"><img src="assets/photos/Fundadores.webp" alt="Fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" /></div>
+              <div class="news-media"><img src="assets/photos/Fundadores.webp" srcset="assets/photos/Fundadores-240.webp 240w, assets/photos/Fundadores-480.webp 480w, assets/photos/Fundadores-800.webp 800w, assets/photos/Fundadores.webp 2920w" sizes="(max-width: 640px) 80vw, 340px" alt="Fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip institucional">Institucional</span><span class="news-date">Desde 1974</span></div>
                 <h3>Más de 50 años cuidando la salud visual de Córdoba</h3>
@@ -269,7 +267,7 @@
       <section class="section home-section home-about reveal" id="quienes-somos">
         <div class="container home-about-feature">
           <a class="home-about-photo" href="quienes-somos.html" aria-label="Conocer quiénes somos">
-            <img src="assets/photos/optimized/consultorio-1000.webp" alt="Consultorio del Instituto Oftalmológico de Córdoba" width="1000" height="572" loading="lazy" decoding="async" />
+            <img src="assets/photos/optimized/consultorio-1000.webp" srcset="assets/photos/optimized/consultorio-1000-240.webp 240w, assets/photos/optimized/consultorio-1000-480.webp 480w, assets/photos/optimized/consultorio-1000-800.webp 800w, assets/photos/optimized/consultorio-1000.webp 1000w" sizes="(max-width: 900px) 92vw, 640px" alt="Consultorio del Instituto Oftalmológico de Córdoba" width="1000" height="572" loading="lazy" decoding="async" />
             <span>Desde 1974</span>
           </a>
           <div class="home-about-copy">
@@ -447,7 +445,7 @@
         <div>
           <a class="brand footer-brand" href="index.html">
             <span class="brand-logo-frame">
-              <img src="assets/ioc-logo-symbol.png" alt="" />
+              <img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" />
             </span>
             <span class="brand-copy">
               <strong>Instituto Oftalmológico</strong>

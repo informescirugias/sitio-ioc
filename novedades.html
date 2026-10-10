@@ -21,9 +21,7 @@
     <meta property="og:url" content="https://iocp.com.ar/novedades.html" />
     <meta property="og:image" content="https://iocp.com.ar/assets/og-card.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
       <!-- Google Analytics 4 -->
@@ -53,8 +51,8 @@
         </div>
       </div>
       <nav class="nav" aria-label="Navegación principal">
-        <a class="brand" href="index.html" aria-label="Instituto Oftalmológico de Córdoba">
-          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+        <a class="brand" href="index.html">
+          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
           <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -99,7 +97,7 @@
           <div class="featured-shell">
           <div class="news-track featured-track" data-news-interval="7000" aria-label="Campañas destacadas">
             <article class="news-featured reveal">
-            <div class="news-featured-media"><a class="media-link" href="novedades/estrabismo-que-es-cuando-consultar/index.html"><img src="assets/photos/novedades/estrabismo-ioc.webp" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></a></div>
+            <div class="news-featured-media"><a class="media-link" href="novedades/estrabismo-que-es-cuando-consultar/index.html"><img src="assets/photos/novedades/estrabismo-ioc.webp" srcset="assets/photos/novedades/estrabismo-ioc-240.webp 240w, assets/photos/novedades/estrabismo-ioc-480.webp 480w, assets/photos/novedades/estrabismo-ioc-800.webp 800w, assets/photos/novedades/estrabismo-ioc.webp 1200w" sizes="(max-width: 900px) 92vw, 600px" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></a></div>
             <div class="news-featured-body">
               <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">8 de septiembre de 2026</span><span class="news-badge-new">Nuevo</span></div>
               <h2><a href="novedades/estrabismo-que-es-cuando-consultar/index.html">Estrabismo: qué es y por qué consultar a tiempo</a></h2>
@@ -108,7 +106,7 @@
             </div>
           </article>
             <article class="news-featured reveal">
-            <div class="news-featured-media"><a class="media-link" href="novedades/blefaritis-parpados-inflamados/index.html"><img src="assets/photos/novedades/blefaritis-ioc.webp" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></a></div>
+            <div class="news-featured-media"><a class="media-link" href="novedades/blefaritis-parpados-inflamados/index.html"><img src="assets/photos/novedades/blefaritis-ioc.webp" srcset="assets/photos/novedades/blefaritis-ioc-240.webp 240w, assets/photos/novedades/blefaritis-ioc-480.webp 480w, assets/photos/novedades/blefaritis-ioc-800.webp 800w, assets/photos/novedades/blefaritis-ioc.webp 1200w" sizes="(max-width: 900px) 92vw, 600px" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></a></div>
             <div class="news-featured-body">
               <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">13 de agosto de 2026</span></div>
               <h2><a href="novedades/blefaritis-parpados-inflamados/index.html">Blefaritis: por qué se inflaman los párpados y cómo cuidarlos</a></h2>
@@ -117,7 +115,7 @@
             </div>
           </article>
             <article class="news-featured reveal">
-            <div class="news-featured-media"><a class="media-link" href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html"><img src="assets/photos/novedades/presbicia-ioc.webp" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></a></div>
+            <div class="news-featured-media"><a class="media-link" href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html"><img src="assets/photos/novedades/presbicia-ioc.webp" srcset="assets/photos/novedades/presbicia-ioc-240.webp 240w, assets/photos/novedades/presbicia-ioc-480.webp 480w, assets/photos/novedades/presbicia-ioc-800.webp 800w, assets/photos/novedades/presbicia-ioc.webp 1200w" sizes="(max-width: 900px) 92vw, 600px" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></a></div>
             <div class="news-featured-body">
               <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">5 de agosto de 2026</span></div>
               <h2><a href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html">Presbicia: por qué aparece a los 40 y cómo se corrige</a></h2>
@@ -134,7 +132,7 @@
           <div class="news-grid">
             <article class="news-card reveal">
               <a class="news-card-inner" href="novedades/estrabismo-que-es-cuando-consultar/index.html">
-              <div class="news-media"><img src="assets/photos/novedades/estrabismo-ioc.webp" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></div>
+              <div class="news-media"><img src="assets/photos/novedades/estrabismo-ioc.webp" srcset="assets/photos/novedades/estrabismo-ioc-240.webp 240w, assets/photos/novedades/estrabismo-ioc-480.webp 480w, assets/photos/novedades/estrabismo-ioc-800.webp 800w, assets/photos/novedades/estrabismo-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Control oftalmológico infantil en el Instituto Oftalmológico de Córdoba" loading="lazy" width="1200" height="751" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">8 de septiembre de 2026</span><span class="news-badge-new">Nuevo</span></div>
                 <h3>Estrabismo: qué es y por qué consultar a tiempo</h3>
@@ -145,7 +143,7 @@
             </article>
             <article class="news-card reveal">
               <a class="news-card-inner" href="novedades/blefaritis-parpados-inflamados/index.html">
-              <div class="news-media"><img src="assets/photos/novedades/blefaritis-ioc.webp" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></div>
+              <div class="news-media"><img src="assets/photos/novedades/blefaritis-ioc.webp" srcset="assets/photos/novedades/blefaritis-ioc-240.webp 240w, assets/photos/novedades/blefaritis-ioc-480.webp 480w, assets/photos/novedades/blefaritis-ioc-800.webp 800w, assets/photos/novedades/blefaritis-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Persona frente al espejo del baño tocándose suavemente el párpado" loading="lazy" width="1200" height="751" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">13 de agosto de 2026</span></div>
                 <h3>Blefaritis: por qué se inflaman los párpados y cómo cuidarlos</h3>
@@ -156,7 +154,7 @@
             </article>
             <article class="news-card reveal">
               <a class="news-card-inner" href="novedades/presbicia-por-que-aparece-como-se-corrige/index.html">
-              <div class="news-media"><img src="assets/photos/novedades/presbicia-ioc.webp" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></div>
+              <div class="news-media"><img src="assets/photos/novedades/presbicia-ioc.webp" srcset="assets/photos/novedades/presbicia-ioc-240.webp 240w, assets/photos/novedades/presbicia-ioc-480.webp 480w, assets/photos/novedades/presbicia-ioc-800.webp 800w, assets/photos/novedades/presbicia-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Mujer alejando el celular con el brazo estirado para poder leer la pantalla" loading="lazy" width="1200" height="751" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">5 de agosto de 2026</span></div>
                 <h3>Presbicia: por qué aparece a los 40 y cómo se corrige</h3>
@@ -167,7 +165,7 @@
             </article>
             <article class="news-card reveal">
               <a class="news-card-inner" href="novedades/cirugia-laser-miopia-astigmatismo/index.html">
-              <div class="news-media"><img src="assets/photos/novedades/cirugia-laser-ioc.webp" alt="Paciente durante una topografía corneal previa a una cirugía refractiva" loading="lazy" width="1200" height="751" /></div>
+              <div class="news-media"><img src="assets/photos/novedades/cirugia-laser-ioc.webp" srcset="assets/photos/novedades/cirugia-laser-ioc-240.webp 240w, assets/photos/novedades/cirugia-laser-ioc-480.webp 480w, assets/photos/novedades/cirugia-laser-ioc-800.webp 800w, assets/photos/novedades/cirugia-laser-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Paciente durante una topografía corneal previa a una cirugía refractiva" loading="lazy" width="1200" height="751" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">31 de julio de 2026</span></div>
                 <h3>Cirugía láser: ¿podés dejar los anteojos?</h3>
@@ -178,7 +176,7 @@
             </article>
             <article class="news-card reveal">
               <a class="news-card-inner" href="novedades/cataratas-que-son-cuando-operarse/index.html">
-              <div class="news-media"><img src="assets/photos/novedades/cataratas-ioc.webp" alt="Mujer mayor sonriente leyendo el diario junto a la ventana" loading="lazy" width="1200" height="751" /></div>
+              <div class="news-media"><img src="assets/photos/novedades/cataratas-ioc.webp" srcset="assets/photos/novedades/cataratas-ioc-240.webp 240w, assets/photos/novedades/cataratas-ioc-480.webp 480w, assets/photos/novedades/cataratas-ioc-800.webp 800w, assets/photos/novedades/cataratas-ioc.webp 1200w" sizes="(max-width: 640px) 80vw, 340px" alt="Mujer mayor sonriente leyendo el diario junto a la ventana" loading="lazy" width="1200" height="751" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip consejo">Consejo</span><span class="news-date">27 de julio de 2026</span></div>
                 <h3>Cataratas: qué son y cuándo operarse</h3>
@@ -188,7 +186,7 @@
               </a>
             </article>
             <article class="news-card reveal delay-1">
-              <div class="news-media"><img src="assets/photos/Fundadores.webp" alt="Fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" /></div>
+              <div class="news-media"><img src="assets/photos/Fundadores.webp" srcset="assets/photos/Fundadores-240.webp 240w, assets/photos/Fundadores-480.webp 480w, assets/photos/Fundadores-800.webp 800w, assets/photos/Fundadores.webp 2920w" sizes="(max-width: 640px) 80vw, 340px" alt="Fundadores del Instituto Oftalmológico de Córdoba" loading="lazy" width="2920" height="1672" /></div>
               <div class="news-body">
                 <div class="news-meta"><span class="news-chip institucional">Institucional</span><span class="news-date">Desde 1974</span></div>
                 <h3>Más de 50 años cuidando la salud visual de Córdoba</h3>
@@ -207,7 +205,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html">
-            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
             <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
           </a>
           <p>Novedades, campañas y consejos de salud visual.</p>

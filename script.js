@@ -392,9 +392,12 @@ if (osSearch && osItems.length) {
       if (match) visible += 1;
     });
 
+    const esPami = term.includes("pami");
     if (osNotFound) {
-      osNotFound.hidden = visible > 0 || !term;
+      osNotFound.hidden = visible > 0 || !term || esPami;
     }
+    const osPami = document.querySelector("#osPami");
+    if (osPami) osPami.hidden = !esPami;
   };
 
   osSearch.addEventListener("input", () => {

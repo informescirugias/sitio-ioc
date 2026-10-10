@@ -48,9 +48,7 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
+    <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="styles.css" />
     <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
       <!-- Google Analytics 4 -->
@@ -80,8 +78,8 @@
         </div>
       </div>
       <nav class="nav" aria-label="Navegación principal">
-        <a class="brand" href="index.html" aria-label="Instituto Oftalmológico de Córdoba">
-          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+        <a class="brand" href="index.html">
+          <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
           <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
@@ -180,12 +178,15 @@
             <li class="os-item">UNIMED</li>
           </ul>
 
+          <p class="os-not-found" id="osPami" hidden>
+            El Instituto Oftalmológico de Córdoba <strong>no atiende por PAMI</strong>.
+          </p>
           <p class="os-not-found" id="osNotFound" hidden>
             No encontramos esa cobertura en nuestra lista. <a href="https://wa.me/5493516662384?text=Hola%2C%20quiero%20consultar%20si%20mi%20obra%20social%20o%20prepaga%20tiene%20cobertura.%20Mi%20cobertura%20es%20" target="_blank" rel="noopener">Consultanos por WhatsApp</a> para verificar si trabajamos con ella.
           </p>
 
           <p class="os-footer-note">
-            ¿Tu obra social no está en la lista? Es posible que trabajemos con ella o por reintegro. <a href="https://wa.me/5493516662384?text=Hola%2C%20quiero%20consultar%20si%20mi%20obra%20social%20o%20prepaga%20tiene%20cobertura.%20Mi%20cobertura%20es%20" target="_blank" rel="noopener">Consultanos antes de sacar turno.</a>
+            El instituto no atiende por PAMI. ¿Tu obra social no está en la lista? Es posible que trabajemos con ella o por reintegro. <a href="https://wa.me/5493516662384?text=Hola%2C%20quiero%20consultar%20si%20mi%20obra%20social%20o%20prepaga%20tiene%20cobertura.%20Mi%20cobertura%20es%20" target="_blank" rel="noopener">Consultanos antes de sacar turno.</a>
           </p>
         </div>
       </section>
@@ -196,7 +197,7 @@
       <div class="container footer-grid">
         <div>
           <a class="brand footer-brand" href="index.html">
-            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.png" alt="" /></span>
+            <span class="brand-logo-frame"><img src="assets/ioc-logo-symbol.webp" alt="" width="225" height="225" /></span>
             <span class="brand-copy"><strong>Instituto Oftalmológico</strong><small>de Córdoba</small></span>
           </a>
           <p>Obras sociales y prepagas del Instituto Oftalmológico de Córdoba.</p>

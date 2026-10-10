@@ -1,3 +1,23 @@
+/* Inter latin-ext (alojada en el sitio) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(assets/fonts/inter-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Inter latin (alojada en el sitio) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url(assets/fonts/inter-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* La fuente Inter se carga desde el <head> de cada página con preconnect. */
 
 :root {
@@ -8157,6 +8177,7 @@ body:not(.home-page) main.esp-main > .section-band.esp-cta { padding: 46px 0 50p
 .bio-esp .eyebrow { margin: 0 0 6px; }
 .bio-esp-link { display: block; padding: 4px 0; color: var(--brand-strong); font-weight: 700; text-decoration: none; }
 .bio-esp-link:hover { text-decoration: underline; }
+/* ===== fin especialidades ===== */
 
 /* grilla de especialidades: 8 tarjetas → 4 columnas en escritorio (4+4), 2 en tablet (2×4), 1 en móvil */
 @media (min-width: 921px) {
@@ -8164,3 +8185,35 @@ body:not(.home-page) main.esp-main > .section-band.esp-cta { padding: 46px 0 50p
   .specialty-grid .service-card h3 { font-size: 0.94rem; }
   .specialty-grid .service-card p { font-size: 0.88rem; }
 }
+
+/* ═══ TANDA 1 · auditoría oct-2026 ═══ */
+/* Pie: enlaces uno debajo del otro (la regla del hover los había puesto en línea) */
+.footer-grid div > a:not(.footer-brand) { display: block; width: fit-content; }
+/* Pie: nombre del instituto en dos líneas, igual que en el encabezado */
+.footer-brand .brand-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+
+/* Velocidad: lo que se ve al abrir la página aparece de entrada (sin esperar la animación) */
+html.js .hero .hero-content.reveal,
+html.js .page-hero .reveal, html.js .page-hero.reveal,
+html.js main > section:first-of-type.reveal,
+html.js main > section:first-of-type .reveal,
+html.js .esp-hero.reveal, html.js .guardia-hero.reveal, html.js .article-hero .reveal {
+  opacity: 1; transform: none;
+}
+@keyframes heroSube { from { transform: translateY(14px); } to { transform: none; } }
+@keyframes heroAparece { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+html.js .hero-content > * { opacity: 1; transform: none; transition: none; animation: heroAparece .7s var(--ease-out, ease) both; }
+html.js .hero-content > h1 { animation-name: heroSube; }
+html.js .hero-content > :nth-child(1) { animation-delay: .05s; }
+html.js .hero-content > :nth-child(2) { animation-delay: .12s; }
+html.js .hero-content > :nth-child(3) { animation-delay: .25s; }
+html.js .hero-content > :nth-child(4) { animation-delay: .38s; }
+@media (prefers-reduced-motion: reduce) { html.js .hero-content > * { animation: none; } }
+
+/* Logo: las medidas declaradas solo fijan la proporción; el tamaño lo sigue dando el CSS */
+.brand-logo-frame img { height: auto; }
+
+/* Accesibilidad: verde de WhatsApp con contraste suficiente para texto blanco */
+.floating-whatsapp, .wa-cta-btn { background: #167a4b !important; }
+.floating-whatsapp { opacity: 1; }
+.floating-whatsapp:hover, .floating-whatsapp:focus-visible, .wa-cta-btn:hover { background: #11663e !important; }
